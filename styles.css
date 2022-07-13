@@ -1,0 +1,42 @@
+body {
+    background-image: url("./background.jpeg");
+    background-repeat: no-repeat;
+    background-color: burlywood;
+    background-position-x: left;
+    background-attachment: fixed;
+}
+
+#cloudiness::before {
+    content: "Cloudiness: ";
+}
+
+#feels-like::before {
+    content: "Feels like: ";
+}
+
+#pressure::before {
+    content: "Pressure: ";
+}
+
+#humidity::before {
+    content: "Humidity: "
+}
+
+#visibility::before {
+    content: "Visibility: "
+}
+
+#rain::before {
+    content: "Rain(last 3h): "
+}
+
+#main-icon {
+    height: 250px;
+    width: 250px;
+}
+
+@media only screen and (min-width: 1600px){
+	body {
+        background-size: cover;
+    }
+}
