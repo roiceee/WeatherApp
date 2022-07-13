@@ -1,7 +1,7 @@
 body {
     background-image: url("./background.jpeg");
     background-repeat: no-repeat;
-    background-color: burlywood;
+    background-color: burlywood!important;
     background-position-x: left;
     background-attachment: fixed;
 }
