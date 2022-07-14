@@ -6,26 +6,55 @@ body {
     background-position-x: center;
     background-attachment: fixed;
     font-family: 'DM Sans', sans-serif;
+    margin-bottom: 40px;
 }
 
 #cloudiness::before {
     content: "Cloudiness: ";
 }
 
-#feels-like::before {
-    content: "Feels like: ";
+#cloudiness::after {
+    content: "%";
+}
+
+#temperature::before {
+    content: "Temperature: ";
+}
+
+#temperature::after {
+    content: "°C";
 }
 
 #pressure::before {
     content: "Pressure: ";
 }
 
+#pressure::after {
+    content: "hPa";
+}
+
 #humidity::before {
     content: "Humidity: "
 }
 
+#humidity::after {
+    content: "%"
+}
+
+#wind-speed::before {
+    content: "Windspeed: "
+}
+
+#wind-speed::after {
+    content: "m/s";
+}
+
 #visibility::before {
     content: "Visibility: "
+}
+
+#visibility::after {
+    content: "km"
 }
 
 #rain::before {
@@ -37,12 +66,26 @@ body {
     width: 250px;
 }
 
-#description:before {
-    content: "Description: "
+* {
+    font-size: 0.9rem;
 }
+
 
 @media only screen and (min-width: 1600px){
 	body {
         background-size: cover;
+    }
+}
+
+@media only screen and (min-width: 600px){
+	* {
+        font-size: 1.1rem;
+    }
+}
+
+
+@media only screen and (min-height: 800px){
+	body {
+        background-repeat: repeat;
     }
 }
