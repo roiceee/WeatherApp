@@ -1,4 +1,4 @@
-import sample from '../assets/sample.png'
+
 
 export default async function loadMainInfoHolder() {
         const weatherForecastContainer = document.getElementById('weather-forecast-container');
@@ -12,8 +12,8 @@ function createMainInfoHolder() {
         <div id="forecast-div-row" class="row mx-0">
                     <div id="forecast-container" class="col-11 mx-auto bg-dark bg-opacity-50 p-2">
                         <div id="main-info">
-                        <h2 id="location-name">---</h2>
-                        <img src="${sample}" alt="sample" id="main-icon" class="d-block mx-auto mt-3">
+                        <h1 id="location-name" class="text-center">---</h1>
+                        <img src="#" alt="sample" id="main-icon" class="d-block mx-auto mt-2">
                         <h4 id="temperature" class="text-center mt-2">---</h4>
                         <hr>
                     </div>

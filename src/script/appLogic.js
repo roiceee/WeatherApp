@@ -25,7 +25,7 @@ async function renderLocation(location) {
     const {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, rain, windspeed} = getMainInfoSelectors();
     changeContent(locationName, forecast.getLocationName());
     changeContent(mainIcon, forecast.getMainIcon());
-    changeContent(description, forecast.getForecastText() + ", " + forecast.getDescription());
+    changeContent(description, `${forecast.getForecastText()}, ${forecast.getDescription()}`);
     changeContent(cloudiness, forecast.getCloudiness());
     changeContent(temperature, forecast.getTemperature());
     changeContent(pressure, forecast.getPressure());
@@ -39,12 +39,17 @@ async function renderLocation(location) {
 async function createForecastObject(location) {
     const data = await getData(location);
     console.log(data);
-    return createForecast(data.name, data.weather[0].icon, data.weather[0].main, data.weather[0].description, 
+    return createForecast(`${data.name}, ${data.sys.country}`, data.weather[0].icon, data.weather[0].main, data.weather[0].description, 
         data.clouds.all, data.main.temp, data.main.pressure, data.main.humidity, data.visibility, data.rain3h, 
         data.wind.speed);
 }
 
  function changeContent(holder, data) {
+    //special case for icon
+    if (holder.id === "main-icon") {
+        holder.setAttribute('src', `https://openweathermap.org/img/wn/${data}@4x.png`)
+        return;
+    }
     holder.textContent = data;
  }
 
