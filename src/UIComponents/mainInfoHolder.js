@@ -10,10 +10,10 @@ function createMainInfoHolder() {
     return new Promise(resolve => {
         const DOMString = `
         <div id="forecast-div-row" class="row mx-0">
-                    <div id="forecast-container" class="col-11 mx-auto bg-dark bg-opacity-50 p-2">
+                    <div id="forecast-container" class="col-11 col-sm-7 mx-auto mx-sm-2 bg-dark bg-opacity-50 p-2">
                         <div id="main-info">
                         <h1 id="location-name" class="text-center">---</h1>
-                        <img src="#" alt="sample" id="main-icon" class="d-block mx-auto mt-2">
+                        <img src="#" alt="weather icon" id="main-icon" class="d-block mx-auto mt-2">
                         <h4 id="temperature" class="text-center mt-2">---</h4>
                         <hr>
                     </div>

@@ -1,6 +1,7 @@
 import LocationController from '../DataComponents/LocationController.js';
 import getData from '../DataComponents/WeatherAPIFetcher.js';
 import createForecast from '../DataComponents/ForecastClass.js';
+import fireAlert from '../UIComponents/alert.js';
 
 function getMainInfoSelectors() {
     const locationName = document.getElementById('location-name');
@@ -21,6 +22,7 @@ function renderDefaultLocation() {
 }
 
 async function renderLocation(location) {
+    console.log(location);
     const forecast = await createForecastObject(location);
     const {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, rain, windspeed} = getMainInfoSelectors();
     changeContent(locationName, forecast.getLocationName());
@@ -37,11 +39,15 @@ async function renderLocation(location) {
 }
 
 async function createForecastObject(location) {
-    const data = await getData(location);
-    console.log(data);
+    try {
+        const data = await getData(location);
+        console.log(data);
     return createForecast(`${data.name}, ${data.sys.country}`, data.weather[0].icon, data.weather[0].main, data.weather[0].description, 
         data.clouds.all, data.main.temp, data.main.pressure, data.main.humidity, data.visibility, data.rain3h, 
-        data.wind.speed);
+        data.wind.speed); 
+    } catch(error) {
+        fireAlert("Invalid Location.");
+    }
 }
 
  function changeContent(holder, data) {
@@ -55,4 +61,4 @@ async function createForecastObject(location) {
 
 
 
-export {renderDefaultLocation};
+export {renderDefaultLocation, renderLocation};

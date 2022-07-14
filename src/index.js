@@ -7,8 +7,8 @@ import loadContainers from "./UIComponents/containers";
 import loadNavBar from "./UIComponents/navbar";
 import loadFooter from "./UIComponents/footer";
 import loadMainInfoHolder from "./UIComponents/mainInfoHolder";
-import {renderDefaultLocation} from "./script/appLogic.js";
-
+import {renderDefaultLocation} from "./script/renderData.js";
+import {addSearchButtonListener} from "./script/events.js";
 
 async function initialLoad() {
     loadHeadFiles();
@@ -17,7 +17,7 @@ async function initialLoad() {
     loadFooter();
     await loadMainInfoHolder();
     renderDefaultLocation();
-    
+    addSearchButtonListener();
 }
 
 initialLoad();

@@ -5,8 +5,8 @@ export default function createForecast(locationName, mainIcon, forecastText, des
 
 class Forecast {
     constructor(locationName, mainIcon, forecastText, description, cloudiness, temperature, pressure, humidity, visibility, rain, windspeed) {
-        console.log(locationName + "\n" + mainIcon + "\n" + forecastText + "\n" + description + "\n" + 
-        cloudiness + "\n" + temperature + "\n" + pressure + "\n" + humidity + "\n" + visibility + "\n" + rain + "\n" + windspeed)
+        // console.log(locationName + "\n" + mainIcon + "\n" + forecastText + "\n" + description + "\n" + 
+        // cloudiness + "\n" + temperature + "\n" + pressure + "\n" + humidity + "\n" + visibility + "\n" + rain + "\n" + windspeed)
 
 
         locationName === undefined ? this.locationName = "N/A" : this.locationName = locationName;
