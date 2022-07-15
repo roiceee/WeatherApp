@@ -1,4 +1,4 @@
-import icon from '../assets/icon.jpg';
+import icon from '../assets/weather-icons/cloudiness.png';
 import background from '../assets/background.jpeg';
 
 export default function loadInitialFiles() {
