@@ -1,8 +1,8 @@
 export default function loadNavBar() {
     const DOMString = `
-            <nav class="navbar navbar-dark bg-opacity-50 gx-0 px-3 py-2 px-sm-0">
-                <div class="container">
-                  <a class="navbar-brand">Weather App</a>
+            <nav class="navbar navbar-dark bg-opacity-50 gx-0 py-2 px-sm-0 d-flex">
+                <div class="container d-flex">
+                  <a class="navbar-brand mx-3">Weather App</a>
                   <form class="d-flex" role="search">
                     <input class="form-control rounded-pill mx-0" id="search-bar" type="text" placeholder="Search location" aria-label="Search">
                     <button class="btn d-flex" id="search-button" type="submit">
