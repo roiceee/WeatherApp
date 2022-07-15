@@ -12,9 +12,8 @@ function getMainInfoSelectors() {
     const pressure = document.getElementById('pressure');
     const humidity = document.getElementById('humidity');
     const visibility = document.getElementById('visibility');
-    const rain = document.getElementById('rain');
     const windspeed = document.getElementById('wind-speed');
-    return {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, rain, windspeed};
+    return {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, windspeed};
 }
 
 function renderDefaultLocation() {
@@ -24,7 +23,7 @@ function renderDefaultLocation() {
 async function renderLocation(location) {
     console.log(location);
     const forecast = await createForecastObject(location);
-    const {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, rain, windspeed} = getMainInfoSelectors();
+    const {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, windspeed} = getMainInfoSelectors();
     changeContent(locationName, forecast.getLocationName());
     changeContent(mainIcon, forecast.getMainIcon());
     changeContent(description, `${forecast.getForecastText()}, ${forecast.getDescription()}`);
@@ -33,7 +32,6 @@ async function renderLocation(location) {
     changeContent(pressure, forecast.getPressure());
     changeContent(humidity, forecast.getHumidity());
     changeContent(visibility, forecast.getVisibility());
-    changeContent(rain, forecast.getRain());
     changeContent(windspeed, forecast.getWindspeed());
     forecast.printDetails();
 }

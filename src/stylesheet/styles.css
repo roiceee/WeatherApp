@@ -9,49 +9,27 @@ body {
     margin-bottom: 40px;
 }
 
-#cloudiness::before {
-    content: "Cloudiness: ";
-}
 
 #cloudiness::after {
     content: "%";
-}
-
-#temperature::before {
-    content: "Temperature: ";
 }
 
 #temperature::after {
     content: "°C";
 }
 
-#pressure::before {
-    content: "Pressure: ";
-}
-
 #pressure::after {
     content: "hPa";
-}
-
-#humidity::before {
-    content: "Humidity: "
 }
 
 #humidity::after {
     content: "%"
 }
 
-#wind-speed::before {
-    content: "Windspeed: "
-}
-
 #wind-speed::after {
     content: "m/s";
 }
 
-#visibility::before {
-    content: "Visibility: "
-}
 
 #visibility::after {
     content: "km"
@@ -62,8 +40,11 @@ body {
 }
 
 #main-icon {
-    height: 250px;
-    width: 250px;
+   transform: scale(1.1);
+}
+
+.weather-icon {
+    transform: scale(0.7);
 }
 
 svg {
@@ -76,6 +57,11 @@ svg {
 
 #search-button:focus {
     box-shadow: none;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem #dd8f726e;
+    border: none;
 }
 
 * {
@@ -96,6 +82,9 @@ svg {
 @media only screen and (min-width: 600px){
 	* {
         font-size: 1.1rem;
+    }
+    .weather-icon {
+        transform: scale(0.9);
     }
 }
 

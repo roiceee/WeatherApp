@@ -1,6 +1,6 @@
 export default function loadNavBar() {
     const DOMString = `
-            <nav class="navbar navbar-dark bg-opacity-50 gx-0 px-3 px-sm-0">
+            <nav class="navbar navbar-dark bg-opacity-50 gx-0 px-3 py-2 px-sm-0">
                 <div class="container">
                   <a class="navbar-brand">Weather App</a>
                   <form class="d-flex" role="search">
