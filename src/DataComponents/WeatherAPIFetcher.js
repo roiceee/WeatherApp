@@ -13,6 +13,7 @@ async function fetchData(location) {
         const obj = await data.json();
         return obj;
     } catch(error) {
-        console.log(fireAlert("Please reload the page."));
+        fireAlert("Please reload the page.");
+        return undefined;
     }
 }
