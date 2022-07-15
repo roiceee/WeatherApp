@@ -863,7 +863,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ loadInitialFiles)\n/* harmony export */ });\n/* harmony import */ var _assets_icon_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/icon.jpg */ \"./src/assets/icon.jpg\");\n/* harmony import */ var _assets_background_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/background.jpeg */ \"./src/assets/background.jpeg\");\n\r\n\r\n\r\nfunction loadInitialFiles() {\r\n    document.querySelector('title').textContent = \"WeatherApp\";\r\n    document.querySelector('head').appendChild(createIconLink());\r\n    document.body.style.backgroundImage = `url(${_assets_background_jpeg__WEBPACK_IMPORTED_MODULE_1__})`;\r\n}\r\nfunction createIconLink() {\r\n    const linkTag = document.createElement('link');\r\n    linkTag.setAttribute('rel', \"shortcut icon\");\r\n    linkTag.setAttribute('href', _assets_icon_jpg__WEBPACK_IMPORTED_MODULE_0__);\r\n    linkTag.setAttribute('type', 'image/x-icon');\r\n    return linkTag;\r\n}\r\n\n\n//# sourceURL=webpack://weatherapp/./src/UIComponents/initial.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ loadInitialFiles)\n/* harmony export */ });\n/* harmony import */ var _assets_weather_icons_cloudiness_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/weather-icons/cloudiness.png */ \"./src/assets/weather-icons/cloudiness.png\");\n/* harmony import */ var _assets_background_jpeg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/background.jpeg */ \"./src/assets/background.jpeg\");\n\r\n\r\n\r\nfunction loadInitialFiles() {\r\n    document.querySelector('title').textContent = \"WeatherApp\";\r\n    document.querySelector('head').appendChild(createIconLink());\r\n    document.body.style.backgroundImage = `url(${_assets_background_jpeg__WEBPACK_IMPORTED_MODULE_1__})`;\r\n}\r\nfunction createIconLink() {\r\n    const linkTag = document.createElement('link');\r\n    linkTag.setAttribute('rel', \"shortcut icon\");\r\n    linkTag.setAttribute('href', _assets_weather_icons_cloudiness_png__WEBPACK_IMPORTED_MODULE_0__);\r\n    linkTag.setAttribute('type', 'image/x-icon');\r\n    return linkTag;\r\n}\r\n\n\n//# sourceURL=webpack://weatherapp/./src/UIComponents/initial.js?");
 
 /***/ }),
 
@@ -1127,17 +1127,6 @@ eval("module.exports = \"data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/20
 
 "use strict";
 eval("module.exports = __webpack_require__.p + \"fdcac9f14b26b2e6d618.jpeg\";\n\n//# sourceURL=webpack://weatherapp/./src/assets/background.jpeg?");
-
-/***/ }),
-
-/***/ "./src/assets/icon.jpg":
-/*!*****************************!*\
-  !*** ./src/assets/icon.jpg ***!
-  \*****************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-"use strict";
-eval("module.exports = __webpack_require__.p + \"064132cb49fac3fd3173.jpg\";\n\n//# sourceURL=webpack://weatherapp/./src/assets/icon.jpg?");
 
 /***/ }),
 
