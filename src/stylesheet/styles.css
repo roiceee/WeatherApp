@@ -73,6 +73,10 @@ svg {
     max-width: 800px;
 }
 
+.vr {
+    padding: 0px!important;
+}
+
 @media only screen and (min-width: 1600px){
 	body {
         background-size: cover;
@@ -88,9 +92,14 @@ svg {
     }
 }
 
-
 @media only screen and (min-height: 800px){
 	body {
         background-repeat: repeat;
+    }
+}
+
+@media only screen and (min-width: 768px){
+	#remove-hr {
+        display: none;
     }
 }

@@ -16,7 +16,7 @@ function createMainInfoHolder() {
         <div id="forecast-div-row" class="row mx-auto">
                     <div id="forecast-container" class="col col-11 mx-auto bg-dark bg-opacity-50 p-2">
                         <div class="row">
-                            <div id="forecast-left" class="col col-12 col-sm-6">
+                            <div id="forecast-left" class="col col-12 col-md-6">
                                 <div id="main-info" class="row">
                                     <div id="left" class="col-7 text-center">
                                         <h1 id="location-name" class="text-center">---</h1>
@@ -26,9 +26,9 @@ function createMainInfoHolder() {
                                     </div>
                                     <div id="right" class="col-4 my-auto">
                                         <h4>About the data</h4>
-                                        <h6>The weather forecast data used in this application is from OpenWeather.org. 
+                                        <h6>The weather forecast data used in this application is from OpenWeather. 
                                             <span>
-                                                <a href="https://openweathermap.org/" class="text-light">See more.</a>
+                                                <a href="https://openweathermap.org/" class="text-light" target="_blank">See more.</a>
                                             </span>
                                         </h6>
                                     </div>
@@ -63,11 +63,17 @@ function createMainInfoHolder() {
                                         </div>
                                     </div>
                                 </div>
-                                <hr style="width: 90%" class="mx-auto">
+                                <hr style="width: 90%" class="mx-auto" id="remove-hr">
                             </div>
-                            
-                            <div id="forecast-right" class="col col-12 col-sm-5"> 
-                            <h5>Sample content</h5>
+                            <div class="vr"></div>
+                            <div id="forecast-right" class="col col-12 col-md-5 px-4">
+                                <div id="five-day-forecast-heading"> 
+                                    <h5 id="location-name-1">---</h5>
+                                    <h6>(5-day weather forecast)</h6>
+                                </div>
+                                <div id="five-day-forecast-content" class="row row-cols-auto d-flex justify-content-center">
+
+                                </div>
                             </div>
                         <div class="row">
                     </div>
