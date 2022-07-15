@@ -18,6 +18,10 @@ body {
     content: "°C";
 }
 
+.forecast-temperature::after {
+    content: "°C";
+}
+
 #pressure::after {
     content: "hPa";
 }
@@ -43,8 +47,14 @@ body {
    transform: scale(1.1);
 }
 
-.weather-icon {
-    transform: scale(0.6);
+.small-icon {
+    height: 50px;
+    width: 50px;
+}
+
+.forecast-icon {
+    height: 100px;
+    width: 100px;
 }
 
 svg {
@@ -77,6 +87,12 @@ svg {
     padding: 0px!important;
 }
 
+p {
+    margin: 0px;
+}
+
+
+
 @media only screen and (min-width: 1600px){
 	body {
         background-size: cover;
@@ -87,19 +103,22 @@ svg {
 	* {
         font-size: 1rem;
     }
-    .weather-icon {
-        transform: scale(0.8);
+}
+
+@media only screen and (min-width: 768px){
+	.remove-hr {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 575px){
+	.remove-hr-1 {
+        display: none;
     }
 }
 
 @media only screen and (min-height: 800px){
 	body {
         background-repeat: repeat;
-    }
-}
-
-@media only screen and (min-width: 768px){
-	#remove-hr {
-        display: none;
     }
 }

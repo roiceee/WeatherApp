@@ -13,6 +13,6 @@ class FiveDayForecast {
     }
 
     getForecastDataArray() {
-        this.forecastDataArray;
+        return this.forecastDataArray;
     }
 }

@@ -4,6 +4,7 @@ import {convertKelvinToCelsius, convertMeterToKM} from '../script/utils';
 import createFiveDayForecast  from '../DataComponents/FiveDayForecastClass.js';
 import createCurrentWeather from '../DataComponents/CurrentWeatherClass.js';
 import fireAlert from '../UIComponents/alert.js';
+import { format } from 'date-fns'
 
 
 function getMainInfoSelectors() {
@@ -19,9 +20,14 @@ function getMainInfoSelectors() {
     return {locationName, mainIcon, description, cloudiness, temperature, pressure, humidity, visibility, windspeed};
 }
 
-// function getFiveDayForecastSelectors() {
-
-// }
+function getFiveDayForecastSelectors() {
+    const locationName = document.getElementById('location-name-1');
+    const forecastDates = document.querySelectorAll('.forecast-date');
+    const forecastIcons = document.querySelectorAll('.forecast-icon');
+    const forecastTemperatures = document.querySelectorAll('.forecast-temperature');
+    const forecastDescriptions = document.querySelectorAll('.forecast-description');
+    return {locationName, forecastDates, forecastIcons, forecastTemperatures, forecastDescriptions};
+}
 
 function renderDefaultLocation() {
     renderLocation(LocationController.getDefaultLocation());
@@ -32,7 +38,7 @@ async function renderLocation(location) {
         const currentWeatherData = await createCurrentWeatherDataObject(location);
         updateMainInfoDOM(currentWeatherData);
         const fiveDayWeatherForecast = await createFiveDayForecastDataObject(location);
-        //updateFiveDayWeatherForecast
+        updateFiveDayForecastDOM(fiveDayWeatherForecast);
     } catch (error) {
         console.log(error);
     }
@@ -72,10 +78,30 @@ function updateMainInfoDOM(currentWeatherData) {
         changeContent(windspeed, currentWeatherData.getWindspeed());
 }
 
+function updateFiveDayForecastDOM(fiveDayWeatherForecast) {
+    const array = fiveDayWeatherForecast.getForecastDataArray()
+    console.log(array)
+    const {locationName, forecastDates, forecastIcons, forecastTemperatures, forecastDescriptions} = getFiveDayForecastSelectors();
+    changeContent(locationName, fiveDayWeatherForecast.getLocationName());
+    for (let i = 0; i < array.length; i++) {
+        changeContent(forecastDates[i], processDate(array[i].date));
+        changeContent(forecastIcons[i], array[i].icon);
+        changeContent(forecastTemperatures[i], convertKelvinToCelsius(array[i].temperature));
+        changeContent(forecastDescriptions[i], array[i].description);
+    }
+}
+
 function getForecastData(data) {
     const twelveAMForecasts = filter12AMForecasts(data.list);
     const forecastData = mapForecastData(twelveAMForecasts);
     return forecastData;
+}
+
+function processDate(date) {
+    date = date.split("-");
+    const newDate = new Date(date[0], date[1] - 1, date[2]);
+    date = format(newDate, "E, MMMM dd, yyyy");
+    return date;
 }
 
 function filter12AMForecasts(array) {
@@ -87,7 +113,8 @@ function filter12AMForecasts(array) {
 
 function mapForecastData(array) {
     return array.map((obj) => {
-        return [obj.main.temp, obj.weather[0].icon, obj.weather[0].main, obj.weather[0].description];
+        return {"date": obj.dt_txt.split(" ")[0], "temperature": obj.main.temp, 
+        "icon": obj.weather[0].icon, "description": `${obj.weather[0].main}, ${obj.weather[0].description}`};
     })
 }
 
@@ -97,7 +124,13 @@ function changeContent(holder, data) {
         holder.setAttribute('src', `https://openweathermap.org/img/wn/${data}@4x.png`)
         return;
     }
+    if (holder.classList.contains('forecast-icon')) {
+        holder.setAttribute('src', `https://openweathermap.org/img/wn/${data}@4x.png`)
+        return;
+    }
     holder.textContent = data;
 }
+
+
 
 export {renderDefaultLocation, renderLocation};
