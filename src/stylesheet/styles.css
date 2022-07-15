@@ -44,7 +44,7 @@ body {
 }
 
 .weather-icon {
-    transform: scale(0.7);
+    transform: scale(0.6);
 }
 
 svg {
@@ -81,10 +81,10 @@ svg {
 
 @media only screen and (min-width: 600px){
 	* {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     .weather-icon {
-        transform: scale(0.9);
+        transform: scale(0.8);
     }
 }
 
