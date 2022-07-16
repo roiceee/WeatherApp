@@ -2,7 +2,6 @@ import icon from '../assets/weather-icons/cloudiness.png';
 import background from '../assets/background.jpeg';
 
 export default function loadInitialFiles() {
-    document.querySelector('title').textContent = "WeatherApp";
     document.querySelector('head').appendChild(createIconLink());
     setBackground();
 }

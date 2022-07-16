@@ -36,27 +36,27 @@ function createMainInfoHolder() {
                                 <hr style="width: 90%" class="mx-auto">
                                 <div id="details" class="mt-3 text-center">
                                     <div class="row row-cols-auto d-flex justify-content-center">
-                                        <div>
+                                        <div class="mt-2">
                                             <img src="${cloudiness}" class="small-icon mb-2">
                                             <h6 class="label" class="my-1">Cloudiness:</h6>
                                             <p id="cloudiness" class="my-1">---</p>
                                         </div>
-                                        <div>
+                                        <div class="mt-2">
                                             <img src="${pressure}" class="small-icon mb-2">
                                             <h6 class="label" class="my-1">Pressure:</h6>
                                             <p id="pressure" class="my-1">---</p>
                                         </div>
-                                        <div>
+                                        <div class="mt-2">
                                             <img src="${windspeed}" class="small-icon mb-2">
                                             <h6 class="label" class="my-1">Wind speed:</h6>
                                             <p id="wind-speed" class="my-1">---</p>
                                         </div>
-                                        <div>
+                                        <div class="mt-2">
                                             <img src="${humidity}" class="small-icon mb-2">
                                             <h6 class="label" class="my-1">Humidity:</h6>
                                             <p id="humidity" class="my-1">---</p>
                                         </div>
-                                        <div>
+                                        <div class="mt-2">
                                             <img src="${visibility}" class="small-icon mb-2">
                                             <h6 class="label" class="my-1">Visibility:</h6>
                                             <p id="visibility" class="my-1">---</p>
