@@ -1,4 +1,5 @@
 import { renderLocation } from "./renderData";
+import LocationController from "../DataComponents/LocationController";
 
 function addSearchButtonListener() {
     const button = document.getElementById('search-button');

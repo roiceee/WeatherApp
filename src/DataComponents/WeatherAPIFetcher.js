@@ -27,7 +27,6 @@ async function fetchFiveDayForecastData(location) {
         return obj;
     } catch(error) {
         fireAlert("Please reload the page.");
-        return undefined;
     }
 }
 
