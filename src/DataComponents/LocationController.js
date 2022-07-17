@@ -19,22 +19,22 @@ export default (function LocationController() {
                 resolve({"isValid": true, "lat": latitude,"lon": longitude});
              }, showError); 
             } else {
-                fireAlert("Geolocation is not supported by this browser.");
+                fireAlert("Geolocation is not supported by this browser");
                 resolve({"isValid": false, "lat": latitude,"lon": longitude});
             }
             function showError(error) {
                 switch(error.code) {
                   case error.PERMISSION_DENIED:
-                    fireAlert("You disabled request for Geolocation for this site.");
+                    fireAlert("You disabled request for Geolocation for this site");
                     break;
                   case error.POSITION_UNAVAILABLE:
-                    fireAlert("Location information is unavailable.");
+                    fireAlert("Location information is unavailable");
                     break;
                   case error.TIMEOUT:
-                    fireAlert("The request to get user location timed out.");
+                    fireAlert("The request to get user location timed out");
                     break;
                   case error.UNKNOWN_ERROR:
-                    fireAlert("An unknown error occurred.");
+                    fireAlert("An unknown error occurred");
                     break;
                 }  
                 resolve({"isValid": false, "lat": latitude,"lon": longitude});
