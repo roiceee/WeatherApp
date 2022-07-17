@@ -2,32 +2,28 @@ import LocationController from './LocationController.js';
 import fireAlert from '../UIComponents/alert.js';
 
 
-
-
-async function getCurrentWeatherData(location) {
-   
-    return await fetchCurrentWeatherData(location);
-}
-
-
-async function fetchCurrentWeatherData(location) {
+async function fetchWeatherData(location) {
     try {
-        const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
-        const obj = await data.json();
-        return obj;
+        const currentWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
+        const fiveDayWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
+        const currentWeatherData = await currentWeather.json();
+        const fiveDayWeatherForecast = await fiveDayWeather.json();
+        return {currentWeatherData, fiveDayWeatherForecast};
     } catch(error) {
         fireAlert("Please reload the page.");
     }
 }
 
-async function fetchFiveDayForecastData(location) {
+async function fetchWeatherDataUsingCoords(latitude, longitude) {
     try {
-        const data = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
-        const obj = await data.json();
-        return obj;
+        const currentWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
+        const fiveDayWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${LocationController.getAPIKey()}`, {mode: 'cors'})
+        const currentWeatherData = await currentWeather.json();
+        const fiveDayWeatherForecast = await fiveDayWeather.json();
+        return {currentWeatherData, fiveDayWeatherForecast};
     } catch(error) {
         fireAlert("Please reload the page.");
     }
 }
 
-export  {getCurrentWeatherData, fetchFiveDayForecastData}
+export  {fetchWeatherData, fetchWeatherDataUsingCoords}

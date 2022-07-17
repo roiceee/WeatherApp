@@ -1,5 +1,5 @@
 import LocationController from '../DataComponents/LocationController.js';
-import {getCurrentWeatherData, fetchFiveDayForecastData} from '../DataComponents/WeatherAPIFetcher.js';
+import {fetchWeatherData} from '../DataComponents/WeatherAPIFetcher.js';
 import {convertKelvinToCelsius, convertMeterToKM, launchSpinner, displayUI, hideUI, deleteSpinner } from './utils';
 import createFiveDayForecast  from '../DataComponents/FiveDayForecastClass.js';
 import createCurrentWeather from '../DataComponents/CurrentWeatherClass.js';
@@ -41,10 +41,9 @@ async function renderDefaultLocation() {
 async function renderLocation(location) {
     try {
         launchSpinner();
-        const currentWeatherData = await createCurrentWeatherDataObject(location);
-        updateMainInfoDOM(currentWeatherData);
-        const fiveDayWeatherForecast = await createFiveDayForecastDataObject(location);
-        updateFiveDayForecastDOM(fiveDayWeatherForecast);
+        const {currentWeatherDataObj, fiveDayWeatherForecastObj} = await createForecastDataObjects(location);
+        updateMainInfoDOM(currentWeatherDataObj);
+        updateFiveDayForecastDOM(fiveDayWeatherForecastObj);
         displayUI();
         deleteSpinner();
         saveLocationName(location)
@@ -54,8 +53,14 @@ async function renderLocation(location) {
     }
 }
 
-async function createCurrentWeatherDataObject(location) {
-        const data = await getCurrentWeatherData(location);
+async function createForecastDataObjects(location) {
+    const {currentWeatherData, fiveDayWeatherForecast} = await fetchWeatherData(location);
+    const currentWeatherDataObj = await createCurrentWeatherDataObject(currentWeatherData);
+    const fiveDayWeatherForecastObj = await createFiveDayForecastDataObject(fiveDayWeatherForecast);
+    return {currentWeatherDataObj, fiveDayWeatherForecastObj};
+}
+
+async function createCurrentWeatherDataObject(data) {
         if (isInvalidLocation(data)) {
             fireAlert(data.message);
             return;
@@ -65,9 +70,7 @@ async function createCurrentWeatherDataObject(location) {
         data.wind.speed); 
     } 
 
-
-async function createFiveDayForecastDataObject(location) {
-        const data = await fetchFiveDayForecastData(location);
+async function createFiveDayForecastDataObject(data) {
         if (isInvalidLocation(data)) {
             fireAlert(data.message);
             return;
@@ -91,7 +94,6 @@ function updateMainInfoDOM(currentWeatherData) {
 
 function updateFiveDayForecastDOM(fiveDayWeatherForecast) {
     const array = fiveDayWeatherForecast.getForecastDataArray()
-
     const {locationName, forecastDates, forecastIcons, forecastTemperatures, forecastDescriptions} = getFiveDayForecastSelectors();
     changeContent(locationName, fiveDayWeatherForecast.getLocationName());
     for (let i = 0; i < array.length; i++) {

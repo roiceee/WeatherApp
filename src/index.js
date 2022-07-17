@@ -10,10 +10,12 @@ import loadFooter from "./UIComponents/footer";
 import loadMainInfoHolder from "./UIComponents/mainInfoHolder";
 import {renderDefaultLocation} from "./script/renderData.js";
 import {addSearchButtonListener} from "./script/events.js";
+import LocationController from './DataComponents/LocationController'
 
 
 
 async function initialLoad() {
+    LocationController.getCurrentLocation();
     loadHeadFiles();
     await loadContainers();
     loadNavBar();
