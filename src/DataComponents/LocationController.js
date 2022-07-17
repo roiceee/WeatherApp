@@ -11,16 +11,16 @@ export default (function LocationController() {
     const getCurrentLocation = function() {
         return new Promise(resolve => {
             let latitude;
-        let longitude;
+            let longitude;
             if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition((position) => {
+                navigator.geolocation.getCurrentPosition((position) => {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
-                 resolve({"isValid": true, "lat": latitude,"lon": longitude});
+                resolve({"isValid": true, "lat": latitude,"lon": longitude});
              }, showError); 
             } else {
-              fireAlert("Geolocation is not supported by this browser.");
-              resolve({"isValid": false, "lat": latitude,"lon": longitude});
+                fireAlert("Geolocation is not supported by this browser.");
+                resolve({"isValid": false, "lat": latitude,"lon": longitude});
             }
             function showError(error) {
                 switch(error.code) {
