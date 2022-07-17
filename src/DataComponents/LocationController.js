@@ -25,7 +25,7 @@ export default (function LocationController() {
             function showError(error) {
                 switch(error.code) {
                   case error.PERMISSION_DENIED:
-                    fireAlert("You disabled request for Geolocation for this site");
+                    fireAlert("Permission to access location is disabled. Allow permission to access location for full experience");
                     break;
                   case error.POSITION_UNAVAILABLE:
                     fireAlert("Location information is unavailable");

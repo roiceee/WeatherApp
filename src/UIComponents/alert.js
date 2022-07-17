@@ -5,7 +5,7 @@ export default function fireAlert(message) {
         if(typeof(element) != 'undefined' && element != null) {
             element.click();
         }
-    }, 5000)
+    }, 8000)
 }
 
 function createAlert(message) {
