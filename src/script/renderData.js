@@ -1,5 +1,5 @@
 import LocationController from '../DataComponents/LocationController.js';
-import {fetchWeatherData} from '../DataComponents/WeatherAPIFetcher.js';
+import {fetchWeatherData, fetchWeatherDataUsingCoords} from '../DataComponents/WeatherAPIFetcher.js';
 import {convertKelvinToCelsius, convertMeterToKM, launchSpinner, displayUI, hideUI, deleteSpinner } from './utils';
 import createFiveDayForecast  from '../DataComponents/FiveDayForecastClass.js';
 import createCurrentWeather from '../DataComponents/CurrentWeatherClass.js';
@@ -28,16 +28,26 @@ function getFiveDayForecastSelectors() {
     return {locationName, forecastDates, forecastIcons, forecastTemperatures, forecastDescriptions};
 }
 
-async function renderDefaultLocation() {
+async function renderLocationOnLoad() {
     hideUI();
-    const isValid = await renderLocation(LocationController.getDefaultLocation());
-        if (!isValid) {
+    const currentLocation = await LocationController.getCurrentLocation();
+    if (currentLocation.isValid) {
+     const success = await renderLocationUsingCoords(currentLocation.lat, currentLocation.lon);
+     if (!success) {
+        setTimeout(() => {
+            renderLocationOnLoad();
+        }, 3000)
+    }
+    }
+    else if (!currentLocation.isValid){
+        const success = await renderLocation(LocationController.getDefaultLocation());
+        if (!success) {
             setTimeout(() => {
-                renderDefaultLocation();
+                renderLocationOnLoad();
             }, 3000)
         }
 }
-
+}
 async function renderLocation(location) {
     try {
         launchSpinner();
@@ -46,11 +56,33 @@ async function renderLocation(location) {
         updateFiveDayForecastDOM(fiveDayWeatherForecastObj);
         displayUI();
         deleteSpinner();
-        saveLocationName(location)
+        saveLocationName(currentWeatherDataObj.getLocationName());
         return true;
     } catch(error) {
         return false;
     }
+}
+
+async function renderLocationUsingCoords(latitude, longitude) {
+    try {
+        launchSpinner();
+        const {currentWeatherDataObj, fiveDayWeatherForecastObj} = await createForecastDataObjectsUsingCoords(latitude, longitude);
+        updateMainInfoDOM(currentWeatherDataObj);
+        updateFiveDayForecastDOM(fiveDayWeatherForecastObj);
+        displayUI();
+        deleteSpinner();
+        saveLocationName(currentWeatherDataObj.getLocationName());
+        return true;
+    } catch(error) {
+        return false;
+    }
+}
+
+async function createForecastDataObjectsUsingCoords(latitude, longitude) {
+    const {currentWeatherData, fiveDayWeatherForecast} = await fetchWeatherDataUsingCoords(latitude, longitude);
+    const currentWeatherDataObj = await createCurrentWeatherDataObject(currentWeatherData);
+    const fiveDayWeatherForecastObj = await createFiveDayForecastDataObject(fiveDayWeatherForecast);
+    return {currentWeatherDataObj, fiveDayWeatherForecastObj};
 }
 
 async function createForecastDataObjects(location) {
@@ -157,4 +189,4 @@ function saveLocationName(location) {
 
 
 
-export {renderDefaultLocation, renderLocation};
+export {renderLocationOnLoad, renderLocation};

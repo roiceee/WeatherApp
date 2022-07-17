@@ -9,22 +9,23 @@ export default (function LocationController() {
                             : defaultLocation = LocalStorageController.getData(localStorageKey);
     
     const getCurrentLocation = function() {
-        let latitude;
+        return new Promise(resolve => {
+            let latitude;
         let longitude;
             if (navigator.geolocation) {
              navigator.geolocation.getCurrentPosition((position) => {
                 latitude = position.coords.latitude;
                 longitude = position.coords.longitude;
-                return {"valid": true, "lat": latitude,"lon": longitude}
+                 resolve({"isValid": true, "lat": latitude,"lon": longitude});
              }, showError); 
             } else {
               fireAlert("Geolocation is not supported by this browser.");
-              return {"valid": false, "lat": latitude,"lon": longitude};
+              resolve({"isValid": false, "lat": latitude,"lon": longitude});
             }
             function showError(error) {
                 switch(error.code) {
                   case error.PERMISSION_DENIED:
-                    fireAlert("You disabled request for Geolocation.");
+                    fireAlert("You disabled request for Geolocation for this site.");
                     break;
                   case error.POSITION_UNAVAILABLE:
                     fireAlert("Location information is unavailable.");
@@ -36,8 +37,10 @@ export default (function LocationController() {
                     fireAlert("An unknown error occurred.");
                     break;
                 }  
-                return {"valid": false, "lat": latitude,"lon": longitude};
+                resolve({"isValid": false, "lat": latitude,"lon": longitude});
     }
+        })
+        
 }
     const getDefaultLocation = function() {
         return defaultLocation;

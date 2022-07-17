@@ -8,20 +8,18 @@ import loadContainers from "./UIComponents/containers";
 import loadNavBar from "./UIComponents/navbar";
 import loadFooter from "./UIComponents/footer";
 import loadMainInfoHolder from "./UIComponents/mainInfoHolder";
-import {renderDefaultLocation} from "./script/renderData.js";
+import {renderLocationOnLoad} from "./script/renderData.js";
 import {addSearchButtonListener} from "./script/events.js";
-import LocationController from './DataComponents/LocationController'
 
 
 
 async function initialLoad() {
-    LocationController.getCurrentLocation();
     loadHeadFiles();
     await loadContainers();
     loadNavBar();
     loadFooter();
     await loadMainInfoHolder();
-    await renderDefaultLocation();
+    await renderLocationOnLoad();
     addSearchButtonListener();
 }
 

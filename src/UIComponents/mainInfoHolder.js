@@ -77,37 +77,37 @@ function createMainInfoHolder() {
                                 <div id="five-day-forecast-content" class="row row-cols-1 row-cols-sm-3 d-flex justify-content-center mt-3">
                                         <div class="text-center mt-2 ">
                                             <h6 class="forecast-date">---</h6>
-                                            <img src="${cloudiness}" class="forecast-icon">
+                                            <img src="#" class="forecast-icon">
                                             <p class="forecast-temperature">---</p>
-                                            <p class="forecast-description">---<h6>
+                                            <p class="forecast-description">---</p>
                                             <hr style="width: 90%" class="mx-auto remove-hr-1">
                                         </div>
                                         <div class="text-center mt-2 mb-3">
                                             <h6 class="forecast-date">---</h6>
-                                            <img src="${cloudiness}" class="forecast-icon">
+                                            <img src="#" class="forecast-icon">
                                             <p class="forecast-temperature">---</p>
-                                            <p class="forecast-description">---<h6>
+                                            <p class="forecast-description">---</p>
                                             <hr style="width: 90%" class="mx-auto remove-hr-1">
                                         </div>
                                         <div class="text-center mt-2 mb-3">
                                             <h6 class="forecast-date">---</h6>
-                                            <img src="${cloudiness}" class="forecast-icon">
+                                            <img src="#" class="forecast-icon">
                                             <p class="forecast-temperature">---</p>
-                                            <p class="forecast-description">---<h6>
+                                            <p class="forecast-description">---</p>
                                             <hr style="width: 90%" class="mx-auto remove-hr-1">
                                         </div>
                                         <div class="text-center mt-2 mb-3">
                                             <h6 class="forecast-date">---</h6>
-                                            <img src="${cloudiness}" class="forecast-icon">
+                                            <img src="#" class="forecast-icon">
                                             <p class="forecast-temperature">---</p>
-                                            <p class="forecast-description">---<h6>
+                                            <p class="forecast-description">---</p>
                                             <hr style="width: 90%" class="mx-auto remove-hr-1">
                                         </div>
                                         <div class="text-center mt-2 mb-3">
                                             <h6 class="forecast-date">---</h6>
-                                            <img src="${cloudiness}" class="forecast-icon">
+                                            <img src="#" class="forecast-icon">
                                             <p class="forecast-temperature">---</p>
-                                            <p class="forecast-description">---<h6>
+                                            <p class="forecast-description">---</p>
                                         </div>
                                 </div>
                             </div>
