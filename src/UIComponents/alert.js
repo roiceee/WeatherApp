@@ -1,9 +1,11 @@
 export default function fireAlert(message) {
     document.body.append(createAlert(message));
     setTimeout(() => {
-        const element = document.getElementById('close-alert');
-        if(typeof(element) != 'undefined' && element != null) {
-            element.click();
+        const alerts = document.querySelectorAll('.alert');
+        if(typeof(alerts) != 'undefined' && alerts != null) {
+            alerts.forEach(obj => {
+                obj.remove();
+            })
         }
     }, 8000)
 }

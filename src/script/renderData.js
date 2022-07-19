@@ -1,6 +1,7 @@
 import LocationController from '../DataComponents/LocationController.js';
 import {fetchWeatherData, fetchWeatherDataUsingCoords} from '../DataComponents/WeatherAPIFetcher.js';
-import {convertKelvinToCelsius, convertMeterToKM, launchSpinner, displayUI, hideUI, deleteSpinner } from './utils';
+import {convertKelvinToCelsius, convertMeterToKM, displayUI, hideUI} from './utils';
+import { launchSpinner, deleteSpinner } from '../UIComponents/spinner.js';
 import createFiveDayForecast  from '../DataComponents/FiveDayForecastClass.js';
 import createCurrentWeather from '../DataComponents/CurrentWeatherClass.js';
 import fireAlert from '../UIComponents/alert.js';
