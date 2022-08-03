@@ -31,6 +31,7 @@ function getFiveDayForecastSelectors() {
 
 async function renderLocationOnLoad() {
     hideUI();
+    launchSpinner();
     const currentLocation = await LocationController.getCurrentLocation();
     if (currentLocation.isValid) {
      const success = await renderLocationUsingCoords(currentLocation.lat, currentLocation.lon);
@@ -48,15 +49,14 @@ async function renderLocationOnLoad() {
             }, 3000)
         }
 }
+    deleteSpinner();
 }
 async function renderLocation(location) {
     try {
-        launchSpinner();
         const {currentWeatherDataObj, fiveDayWeatherForecastObj} = await createForecastDataObjects(location);
         updateMainInfoDOM(currentWeatherDataObj);
         updateFiveDayForecastDOM(fiveDayWeatherForecastObj);
         displayUI();
-        deleteSpinner();
         saveLocationName(currentWeatherDataObj.getLocationName());
         return true;
     } catch(error) {
@@ -66,12 +66,10 @@ async function renderLocation(location) {
 
 async function renderLocationUsingCoords(latitude, longitude) {
     try {
-        launchSpinner();
         const {currentWeatherDataObj, fiveDayWeatherForecastObj} = await createForecastDataObjectsUsingCoords(latitude, longitude);
         updateMainInfoDOM(currentWeatherDataObj);
         updateFiveDayForecastDOM(fiveDayWeatherForecastObj);
         displayUI();
-        deleteSpinner();
         saveLocationName(currentWeatherDataObj.getLocationName());
         return true;
     } catch(error) {
@@ -104,10 +102,6 @@ async function createCurrentWeatherDataObject(data) {
     } 
 
 async function createFiveDayForecastDataObject(data) {
-        if (isInvalidLocation(data)) {
-            fireAlert(data.message);
-            return;
-        }
         const forecastDataArray = getForecastData(data);
         return createFiveDayForecast(`${data.city.name}, ${data.city.country}`, forecastDataArray);
 }

@@ -10,7 +10,7 @@ async function fetchWeatherData(location) {
         const fiveDayWeatherForecast = await fiveDayWeather.json();
         return {currentWeatherData, fiveDayWeatherForecast};
     } catch(error) {
-        fireAlert("Please reload the page.");
+        fireAlert("Can't fetch data. Please reload the page.");
     }
 }
 
@@ -22,7 +22,7 @@ async function fetchWeatherDataUsingCoords(latitude, longitude) {
         const fiveDayWeatherForecast = await fiveDayWeather.json();
         return {currentWeatherData, fiveDayWeatherForecast};
     } catch(error) {
-        fireAlert("Please reload the page.");
+        fireAlert("Can't fetch data. Please reload the page.");
     }
 }
 
